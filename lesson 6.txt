@@ -1,0 +1,33 @@
+def funtion():
+    a = int(input("how many dogs?:"))
+
+    if a < 0:
+        print("please use a positive number please")
+
+    elif a:
+        print("you have", a, "dogs")
+        print("you have", a * 2, "cats")
+        print("you have", a * 4, "ducks")
+        print("altogether you have", a * 7, "animals")
+
+
+funtion()
+
+######################################################################
+
+def function():
+    a = int(input("your number:"))
+
+    if a < 1:
+        print("use a positive number please")
+
+    for a in range(1, a + 1):
+        print(a, " ", end='')
+    print(" ")
+    while (a >= 1):
+        print(a, end='  ')
+        a = a - 1
+
+
+function()
+
