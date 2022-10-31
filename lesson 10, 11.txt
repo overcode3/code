@@ -1,0 +1,38 @@
+import sqlite3
+
+connection = sqlite3.connect('sql.bd')
+
+cursor = connection.cursor()
+print("DB Init")
+
+cursor.execute("DROP TABLE IF EXISTS STUDENT")
+
+table = """CREATE TABLE STUDENT(
+            Name VARCHAR(255) NOT NULL,
+            Class VARCHAR(25) NOT NULL,
+            Section VARCHAR(25));"""
+cursor.execute(table)
+print("Table is ready")
+
+cursor.execute('''INSERT INTO STUDENT VALUES ('Ion', '7th','A')''')
+cursor.execute('''INSERT INTO STUDENT VALUES ('Mihai', '8th', 'B')''')
+cursor.execute('''INSERT INTO STUDENT VALUES ('Alex', '9th', 'C')''')
+
+update = cursor.execute("""UPDATE STUDENT
+                           SET CLASS = '10' WHERE NAME = 'Alex'""")
+delete = cursor.execute("""DElETE FROM STUDENT WHERE NAME ='Ion'""")
+result1 = cursor.execute("""SELECT * FROM STUDENT
+                            WHERE NAME = 'Ion'""")
+data = cursor.execute('''SELECT * FROM STUDENT''')
+for row in data:
+    print(row)
+
+print(result1.fetchall())
+
+query = 'select sqlite_version();'
+cursor.execute(query)
+
+result = cursor.fetchall()
+print('SQLite Version is {}'.format(result))
+
+cursor.close()
